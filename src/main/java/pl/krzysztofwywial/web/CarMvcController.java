@@ -10,8 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import pl.krzysztofwywial.CarRentalKwApplication;
-import pl.krzysztofwywial.config.ImageConfig;
+import pl.krzysztofwywial.config.ImagePathConfig;
 import pl.krzysztofwywial.exception.RecordNotFoundException;
 import pl.krzysztofwywial.model.CarEntity;
 import pl.krzysztofwywial.service.CarService;
@@ -27,7 +26,7 @@ public class CarMvcController {
     CarService service;
 
     @Autowired
-    ImageConfig config;
+    ImagePathConfig config;
 
     private static Logger log = LogManager.getLogger(CarMvcController.class);
 

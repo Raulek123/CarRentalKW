@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import pl.krzysztofwywial.config.ImageConfig;
+import pl.krzysztofwywial.config.ImagePathConfig;
 import pl.krzysztofwywial.exception.RecordNotFoundException;
 import pl.krzysztofwywial.model.CarEntity;
 import pl.krzysztofwywial.repository.CarRepository;
@@ -26,7 +26,7 @@ public class CarService {
     private CarRepository repository;
 
     @Autowired
-    private ImageConfig imagePath;
+    private ImagePathConfig imagePath;
 
 
     public List<CarEntity> getAllCars() {

@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @ConstructorBinding
 @Getter
 @Setter
-public class ImageConfig {
+public class ImagePathConfig {
     private String imageSave;
     private String imageGet;
 }
