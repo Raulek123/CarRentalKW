@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import pl.krzysztofwywial.CarRentalKwApplication;
+import pl.krzysztofwywial.config.ImageConfig;
 import pl.krzysztofwywial.exception.RecordNotFoundException;
 import pl.krzysztofwywial.model.CarEntity;
 import pl.krzysztofwywial.service.CarService;
@@ -25,6 +26,9 @@ public class CarMvcController {
     @Autowired
     CarService service;
 
+    @Autowired
+    ImageConfig config;
+
     private static Logger log = LogManager.getLogger(CarMvcController.class);
 
 
@@ -32,6 +36,7 @@ public class CarMvcController {
     public String getAllCars(Model model) {
         List<CarEntity> list = service.getAllCars();
         model.addAttribute("cars", list);
+        model.addAttribute("imagePath", config.getImageGet());
         return "cars-list";
     }
 

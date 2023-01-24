@@ -35,14 +35,6 @@ public class CarEntity implements Comparable<CarEntity> {
     @Column(name = "available")
     private boolean available;
 
-
-    public String getImagePath() {
-        if (image == null || id == null) {
-            return null;
-        }
-        return "/images/" + id + "/" + image;
-    }
-
     @Override
     public int compareTo(CarEntity c) {
         return this.brand.compareToIgnoreCase(c.brand);

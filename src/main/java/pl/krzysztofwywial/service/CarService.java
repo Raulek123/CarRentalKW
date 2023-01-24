@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import pl.krzysztofwywial.config.ImageConfig;
 import pl.krzysztofwywial.exception.RecordNotFoundException;
 import pl.krzysztofwywial.model.CarEntity;
 import pl.krzysztofwywial.repository.CarRepository;
@@ -23,6 +24,9 @@ public class CarService {
 
     @Autowired
     private CarRepository repository;
+
+    @Autowired
+    private ImageConfig imagePath;
 
 
     public List<CarEntity> getAllCars() {
@@ -61,7 +65,7 @@ public class CarService {
         car.setImage(fileName);
 
         CarEntity carSaved = repository.save(car);
-        String uploadDiectory = "images/" + carSaved.getId();
+        String uploadDiectory = imagePath.getImageSave() + carSaved.getId();
         saveFile(uploadDiectory, fileName, multipartFile);
     }
 
