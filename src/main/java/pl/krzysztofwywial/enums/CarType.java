@@ -6,13 +6,13 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public enum CarType {
-    HATCHBACK ("Hatchback"),
-    KOMBI ("Kombi"),
-    COUPE ("Coupe"),
-    SEDAN ("Sedan"),
-    SUV ("SUV"),
-    VAN ("VAN");
+    HATCHBACK("Hatchback"),
+    KOMBI("Kombi"),
+    COUPE("Coupe"),
+    SEDAN("Sedan"),
+    SUV("SUV"),
+    VAN("VAN");
 
-    private  final String description;
+    private final String description;
 
 }

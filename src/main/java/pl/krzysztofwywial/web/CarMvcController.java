@@ -66,12 +66,12 @@ public class CarMvcController {
     }
 
     @RequestMapping(path = "/createCar", method = RequestMethod.POST)
-    public String createOrUpdateCar (CarEntity car,
-                                     @RequestParam("img")MultipartFile multipartFile) {
+    public String createOrUpdateCar(CarEntity car,
+                                    @RequestParam("img") MultipartFile multipartFile) {
         service.createOrUpdateCar(car);
         try {
             service.saveImage(car, multipartFile);
-        }catch (Exception e) {
+        } catch (Exception e) {
             log.error("Error save photo", e);
         }
         return "redirect:/";
