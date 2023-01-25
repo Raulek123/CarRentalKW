@@ -36,6 +36,7 @@ public class CarMvcController {
         List<CarEntity> list = service.getAllCars();
         model.addAttribute("cars", list);
         model.addAttribute("imagePath", config.getImageGet());
+        model.addAttribute("localDateTime", service.getCurrentDateTime.get());
         return "cars-list";
     }
 

@@ -16,11 +16,16 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Supplier;
 
 @Service
 public class CarService {
+
+    private final static DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("HH:mm dd-MM-yyyy");
 
     @Autowired
     private CarRepository repository;
@@ -28,6 +33,7 @@ public class CarService {
     @Autowired
     private ImagePathConfig imagePath;
 
+    public Supplier<String> getCurrentDateTime = () -> LocalDateTime.now().format(FORMATTER);
 
     public List<CarEntity> getAllCars() {
         List<CarEntity> result = (List<CarEntity>) repository.findAll();
