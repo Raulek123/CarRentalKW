@@ -16,7 +16,9 @@
             <div class="position-relative bg-secondary">
                 <div style="text-align: center">
                     <h2 style="color: white">Wypożyczalnia samochodów RentalCars</h2>
-                    <p style="text-align: center; color: white"  th:text="${localDateTime}"></p>
+                    <p style="text-align: center; color: white" id="current-time">
+                        Loading...
+                    </p>
                 </div>
                 <img th:src="@{/images/lamborghini.jpg}" th:width="1100px" th:alt="lamborghini" th:class="img-fluid"/>
             </div>
@@ -53,7 +55,6 @@
         </div>
     </div>
 </div>
-</div>
 <p style="text-align: center">
     <a href="/edit-car" class="btn btn-primary">
         <i class="fas ml-2">Panel administratora</i></a>
@@ -61,5 +62,16 @@
 <footer class="footer">
     <p style="text-align: center">RentalCars 2022<i class="fas fa-copyright"></i> Krzysztof Wywiał</p>
 </footer>
+<script>
+function updateCurrentTime() {
+const currentTimeElement = document.getElementById('current-time');
+const currentDateTime = new Date();
+const formattedDateTime = currentDateTime.toLocaleString('pl-PL');
+
+currentTimeElement.textContent = formattedDateTime;
+}
+
+setInterval(updateCurrentTime, 1000);
+</script>
 </body>
 </html>

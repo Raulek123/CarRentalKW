@@ -1,16 +1,12 @@
 package pl.krzysztofwywial.model;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 import pl.krzysztofwywial.enums.CarType;
 
 import javax.persistence.*;
 
 @Entity
-@Getter
-@Setter
-@ToString
+@Data
 @Table(name = "CARS")
 public class CarEntity implements Comparable<CarEntity> {
     @Id

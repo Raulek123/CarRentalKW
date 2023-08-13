@@ -1,6 +1,6 @@
 package pl.krzysztofwywial.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,24 +16,16 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Supplier;
 
 @Service
+@RequiredArgsConstructor
 public class CarService {
 
-    private final static DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("HH:mm dd-MM-yyyy");
+    private final CarRepository repository;
+    private final ImagePathConfig imagePath;
 
-    @Autowired
-    private CarRepository repository;
-
-    @Autowired
-    private ImagePathConfig imagePath;
-
-    public Supplier<String> getCurrentDateTime = () -> LocalDateTime.now().format(FORMATTER);
 
     public List<CarEntity> getAllCars() {
         List<CarEntity> result = (List<CarEntity>) repository.findAll();

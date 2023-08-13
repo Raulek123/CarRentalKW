@@ -1,5 +1,6 @@
 package pl.krzysztofwywial.web;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,8 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import pl.krzysztofwywial.config.ImagePathConfig;
 import pl.krzysztofwywial.exception.RecordNotFoundException;
 import pl.krzysztofwywial.model.CarEntity;
@@ -19,6 +18,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
+@Slf4j
 @RequestMapping("/")
 public class CarMvcController {
 
@@ -28,7 +28,6 @@ public class CarMvcController {
     @Autowired
     ImagePathConfig config;
 
-    private static Logger log = LogManager.getLogger(CarMvcController.class);
 
 
     @RequestMapping
@@ -36,7 +35,6 @@ public class CarMvcController {
         List<CarEntity> list = service.getAllCars();
         model.addAttribute("cars", list);
         model.addAttribute("imagePath", config.getImageGet());
-        model.addAttribute("localDateTime", service.getCurrentDateTime.get());
         return "cars-list";
     }
 

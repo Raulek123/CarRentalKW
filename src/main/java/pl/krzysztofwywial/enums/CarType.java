@@ -14,5 +14,4 @@ public enum CarType {
     VAN("VAN");
 
     private final String description;
-
 }
