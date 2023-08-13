@@ -23,8 +23,8 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class CarService {
 
-    private final CarRepository repository;
-    private final ImagePathConfig imagePath;
+    private CarRepository repository;
+    private ImagePathConfig imagePath;
 
 
     public List<CarEntity> getAllCars() {

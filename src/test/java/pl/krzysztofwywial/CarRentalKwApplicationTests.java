@@ -1,6 +1,7 @@
 package pl.krzysztofwywial;
 
 
+import org.assertj.core.api.ThrowableAssert;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -11,8 +12,7 @@ import pl.krzysztofwywial.exception.RecordNotFoundException;
 import pl.krzysztofwywial.repository.CarRepository;
 import pl.krzysztofwywial.service.CarService;
 
-import static org.junit.Assert.assertThrows;
-import static org.junit.Assert.assertTrue;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 
 @SpringBootTest
@@ -28,25 +28,21 @@ class CarRentalKwApplicationTests {
     @Test
     void carServiceGetCarByIdAssertThrowsRecordNotFoundException() {
 
-        Exception exception = assertThrows(RecordNotFoundException.class, () -> {
-            service.getCarById(1L);
-        });
+        final ThrowableAssert.ThrowingCallable callable = () -> service.getCarById(1L);
 
-        String exectedMessage = "No car record was found for given ID";
-        String actualMessage = exception.getMessage();
-
-        assertTrue(actualMessage.equals(exectedMessage));
+        assertThatThrownBy(callable)
+                .isInstanceOf(RecordNotFoundException.class)
+                .hasMessage("No car record was found for given ID");
     }
 
     @Test
     public void carServiceDeleteCarByIdAssertThrowsRecordNotFoundException() {
 
-        Exception exception = assertThrows(RecordNotFoundException.class, () -> {
-            service.deleteCarById(1L);
-        });
-        String exectedMessage = "No car record was found for given ID";
-        String actualMessage = exception.getMessage();
+        final ThrowableAssert.ThrowingCallable callable = () -> service.deleteCarById(1L);
 
-        assertTrue(actualMessage.equals(exectedMessage));
+        assertThatThrownBy(callable)
+                .isInstanceOf(RecordNotFoundException.class)
+                .hasMessage("No car record was found for given ID");
     }
 }
+
